@@ -7,7 +7,10 @@ use application\app\Controller;
 class MainController extends Controller
 {
     public function actionIndex() {
-        echo 'Main page';
-        debug($this->route);
+        $vars = [
+          'name' => 'Vasya',
+          'age' => '88'
+        ];
+        $this->view->render('Main', $vars);
     }
 }

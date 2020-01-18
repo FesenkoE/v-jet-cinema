@@ -8,5 +8,5 @@
     <label for="">
         <input type="password">
     </label>
-    <button>Register</button>
+    <button style="background: white">Register</button>
 </form>

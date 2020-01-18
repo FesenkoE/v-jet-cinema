@@ -7,11 +7,10 @@ use application\app\Controller;
 class AccountController extends Controller
 {
     public function actionLogin() {
-        echo 'Login page';
-        debug($this->route);
+        $this->view->render('Login');
     }
 
     public function actionRegister() {
-        echo 'Register page';
+        $this->view->render('Register');
     }
 }

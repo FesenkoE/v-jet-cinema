@@ -63,13 +63,13 @@ class Router
                     $controller = new $path($this->params);
                     $controller->$action();
                 } else {
-                    echo 'method ' . $action . ' is not defined';
+                    View::errorCode(404);
                 }
             } else {
-                echo $path . ' is not found';
+                View::errorCode(404);
             }
         } else {
-            echo 'Route is not found';
+            View::errorCode(404);
         }
 
     }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?= $title ?></title>
 </head>
-<body>
-<h1><?= $content ?></h1>
+<body style="background: #2c2c2c">
+<?= $content ?>
 </body>
 </html>
