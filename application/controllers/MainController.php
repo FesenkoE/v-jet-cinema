@@ -1,16 +1,13 @@
 <?php
 
-
 namespace application\controllers;
-
 
 use application\app\Controller;
 
-class MovieController extends Controller
+class MainController extends Controller
 {
-    public function actionIndex()
-    {
-        echo 'Movies page';
+    public function actionIndex() {
+        echo 'Main page';
         debug($this->route);
     }
 }
