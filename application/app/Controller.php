@@ -4,6 +4,7 @@
 namespace application\app;
 
 use application\app\View;
+use application\lib\Db;
 
 abstract class Controller
 {

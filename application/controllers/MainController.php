@@ -3,14 +3,18 @@
 namespace application\controllers;
 
 use application\app\Controller;
+use application\lib\Db;
 
 class MainController extends Controller
 {
     public function actionIndex() {
-        $vars = [
-          'name' => 'Vasya',
-          'age' => '88'
+        $db = new Db;
+        $params = [
+            'id' => 2
         ];
-        $this->view->render('Main', $vars);
+        $result = $db->row('SELECT name FROM movie WHERE id = :id', $params);
+        debug($result);
+
+        $this->view->render('Main');
     }
 }
