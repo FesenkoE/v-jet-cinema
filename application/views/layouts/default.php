@@ -8,6 +8,8 @@
     <title><?= $title ?></title>
 </head>
 <body>
-<h1><?= $content ?></h1>
+<?= $content ?>
+<script src="/public/scripts/jquery-3.4.1.min.js"></script>
+<script src="/public/scripts/script.js"></script>
 </body>
 </html>
