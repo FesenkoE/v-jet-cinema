@@ -62,4 +62,23 @@ class View
 
         exit;
     }
+
+    /**
+     * get error message for empty POST
+     * @param $status
+     * @param $message
+     */
+    public function message($status, $message)
+    {
+        exit(json_encode(['status' => $status, 'message' => $message]));
+    }
+
+    /**
+     * redirect to url
+     * @param $url
+     */
+    public function location($url)
+    {
+        exit(json_encode(['url' => $url]));
+    }
 }

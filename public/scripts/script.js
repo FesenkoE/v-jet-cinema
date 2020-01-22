@@ -10,7 +10,8 @@ $(document).ready(function () {
           cache: false,
           processData: false,
           success: function (result) {
-            json = JSON.parse(result);
+              console.log(result);
+              json = JSON.parse(result);
             if (json.url) {
                 window.location.href = json.url;
             } else {

@@ -5,6 +5,7 @@ return [
         'controller' => 'main',
         'action' => 'index'
     ],
+
     'account/register' => [
         'controller' => 'account',
         'action' => 'register'
@@ -14,5 +15,10 @@ return [
         'controller' => 'account',
         'action' => 'login'
     ],
+
+    'admin' => [
+        'controller' => 'admin',
+        'action' => 'index'
+    ]
 ];
 
