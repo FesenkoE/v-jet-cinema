@@ -12,15 +12,15 @@ abstract class Controller
     public $view;
     public $model;
     public $acl;
+    public $db;
 
     public function __construct($route)
     {
-        $_SESSION['admin'] = 1;
-        debug($_SESSION);
         $this->route = $route;
-        if (!$this->checkAcl()) {
-            View::errorCode(403);
-        };
+        $this->db = new Db();
+//        if (!$this->checkAcl()) {
+//            View::errorCode(403);
+//        };
         $this->view = new View($route);
         $this->model = $this->loadModel($route['controller']);
     }

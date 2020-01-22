@@ -19,6 +19,21 @@ return [
     'admin' => [
         'controller' => 'admin',
         'action' => 'index'
+    ],
+
+    'admin/create' => [
+        'controller' => 'admin',
+        'action' => 'create'
+    ],
+
+    'admin/update' => [
+        'controller' => 'admin',
+        'action' => 'update'
+    ],
+
+    'admin/delete' => [
+        'controller' => 'admin',
+        'action' => 'delete'
     ]
 ];
 

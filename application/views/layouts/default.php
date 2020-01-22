@@ -12,6 +12,7 @@
 <body>
 <?= $content ?>
 <script src="/public/scripts/jquery-3.4.1.min.js"></script>
+<script src="/public/scripts/bootstrap.min.js"></script>
 <script src="/public/scripts/script.js"></script>
 </body>
 </html>
