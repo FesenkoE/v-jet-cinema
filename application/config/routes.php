@@ -26,12 +26,12 @@ return [
         'action' => 'create'
     ],
 
-    'admin/update' => [
+    'admin/update/{id:\d+}' => [
         'controller' => 'admin',
-        'action' => 'update'
+        'action' => 'update',
     ],
 
-    'admin/delete' => [
+    'admin/delete/{id:\d+}' => [
         'controller' => 'admin',
         'action' => 'delete'
     ]

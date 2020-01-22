@@ -14,13 +14,18 @@
     <form action="admin/update" method="post">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name">
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name"
+                   value="<?= $model['name'] ?>">
         </div>
         <div class="form-group">
             <label for="show-time">Password</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="show-time">
                 <?php foreach ($times as $time) : ?>
-                    <option><?= $time ?></option>
+                    <?php if ($time == $model['show_time']) : ?>
+                        <option selected><?= $time ?></option>
+                    <?php else : ?>
+                        <option><?= $time ?></option>
+                    <?php endif ?>
                 <?php endforeach; ?>
             </select>
         </div>

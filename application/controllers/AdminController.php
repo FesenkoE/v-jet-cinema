@@ -16,13 +16,14 @@ class AdminController extends Controller
         $movies = $movieModel->getAllMovies();
 
         $arr = [
-          'movies' => $movies
+            'movies' => $movies
         ];
 
         $this->view->render('AdminPanel', $arr);
     }
 
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $arr = [
             'times' => Movie::SHOW_TIME,
         ];
@@ -33,7 +34,7 @@ class AdminController extends Controller
 
             $movie = new Movie($name, $showTime);
             $sql = ('INSERT INTO movies (name, show_time) VALUES (:name, :show_time)');
-            if ($movie->add($sql)) {
+            if ($movie->save($sql)) {
                 header('location: /admin');
             };
         }
@@ -41,15 +42,21 @@ class AdminController extends Controller
         $this->view->render('Create', $arr);
     }
 
-    public function actionUpdate() {
+    public function actionUpdate()
+    {
+        $sql = 'SELECT * FROM movies WHERE id=' . $this->route['id'];
+        $model = $this->db->findOne($sql);
+
         $arr = [
-          'model' => '$this->model',
+            'model' => $model,
+            'times' => Movie::SHOW_TIME
         ];
 
         $this->view->render('Update', $arr);
     }
 
-    public function actionDelete() {
+    public function actionDelete()
+    {
         header('Location: /admin');
     }
 }

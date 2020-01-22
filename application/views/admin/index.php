@@ -33,7 +33,7 @@
                 <td><?= $movie['show_time'] ?></td>
                 <td><?= $movie['tickets_count'] ?></td>
                 <td class="text-right">
-                    <a href="admin/update" class="btn btn-primary">Edit</a>
+                    <a href="<?= "admin/update/" . $movie['id'] ?>"  class="btn btn-primary">Edit</a>
                     <a href="admin/delete" class="btn btn-danger">Delete</a>
                 </td>
             </tr>

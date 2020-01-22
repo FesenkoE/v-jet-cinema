@@ -13,6 +13,6 @@ class Main extends Model
     public function getMovies() {
         $query = 'SELECT * FROM movies';
 
-        return $this->db->row($query);
+        return $this->db->findAll($query);
     }
 }

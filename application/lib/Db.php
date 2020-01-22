@@ -40,10 +40,16 @@ class Db
      * @param $sql
      * @return array
      */
-    public function row($sql, $params = [])
+    public function findAll($sql, $params = [])
     {
         $result = $this->query($sql, $params);
         return $result->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findOne($sql, $params = [])
+    {
+        $result = $this->query($sql, $params);
+        return $result->fetch(PDO::FETCH_ASSOC);
     }
 
     /**

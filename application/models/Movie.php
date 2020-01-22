@@ -35,7 +35,7 @@ class Movie extends Model
     public function getAllMovies() {
         $sql = 'SELECT * FROM movies';
 
-        return $this->db->row($sql);
+        return $this->db->findAll($sql);
     }
 
     /**
@@ -43,7 +43,7 @@ class Movie extends Model
      * @param $sql
      * @return bool|\PDOStatement
      */
-    public function add($sql) {
+    public function save($sql) {
         $result = $this->db->query($sql, [
             'name' => $this->name,
             'show_time' => $this->showTime
