@@ -5,7 +5,6 @@ namespace application\controllers;
 
 
 use application\app\Controller;
-use application\lib\Db;
 use application\models\Movie;
 
 class AdminController extends Controller
@@ -35,7 +34,7 @@ class AdminController extends Controller
             $movie = new Movie($name, $showTime);
             $sql = ('INSERT INTO movies (name, show_time) VALUES (:name, :show_time)');
             if ($movie->save($sql)) {
-                header('location: /admin');
+                $this->view->redirect('/admin');
             };
         }
 
@@ -44,7 +43,14 @@ class AdminController extends Controller
 
     public function actionUpdate()
     {
-        $sql = 'SELECT * FROM movies WHERE id=' . $this->route['id'];
+        if (!empty($_POST)) {
+            $movie = new Movie();
+            $movie->edit($_POST, $this->route['id']);
+            $this->view->redirect('/admin');
+        }
+
+        $id = $this->route['id'];
+        $sql = 'SELECT * FROM movies WHERE id=' . $id;
         $model = $this->db->findOne($sql);
 
         $arr = [
@@ -55,8 +61,16 @@ class AdminController extends Controller
         $this->view->render('Update', $arr);
     }
 
+    /**
+     * remove movie
+     */
     public function actionDelete()
     {
-        header('Location: /admin');
+        $id = $this->route['id'];
+        $movie = new Movie();
+
+        $movie->delete($id);
+
+        $this->view->redirect('/admin');
     }
 }

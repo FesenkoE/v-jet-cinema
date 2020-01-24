@@ -8,6 +8,7 @@ use application\lib\Db;
 
 class Movie extends Model
 {
+    public $id;
     public $name;
     public $showTime;
     public $ticketsCount;
@@ -50,5 +51,23 @@ class Movie extends Model
         ]);
 
         return $result;
+    }
+
+    public function edit($post, $id) {
+        $params = [
+            'id' => $id,
+            'name' => $post['name'],
+            'show_time' => $post['show_time']
+        ];
+
+        $this->db->query('UPDATE movies SET name = :name, show_time = :show_time WHERE id = :id', $params);
+    }
+
+    public function delete($id) {
+        $params = [
+            'id' => $id,
+        ];
+
+        $this->db->query('DELETE FROM movies WHERE id = :id', $params);
     }
 }

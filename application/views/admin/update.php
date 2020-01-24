@@ -9,17 +9,16 @@
 <div class="container mt-5">
     <h3 class="text-center">Add Movie</h3>
 </div>
-
 <div class="container">
-    <form action="admin/update" method="post">
+    <form action="/admin/update/<?= $model['id'] ?>" method="post">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter name"
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp" placeholder="Enter name"
                    value="<?= $model['name'] ?>">
         </div>
         <div class="form-group">
-            <label for="show-time">Password</label>
-            <select class="form-control" id="show-time">
+            <label for="show-time">Show Time</label>
+            <select class="form-control" id="show-time" name="show_time">
                 <?php foreach ($times as $time) : ?>
                     <?php if ($time == $model['show_time']) : ?>
                         <option selected><?= $time ?></option>
