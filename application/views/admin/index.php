@@ -15,7 +15,7 @@
             <a href="/admin/movie/" class="btn btn-info btn-block"><h5>Go to Movie List</h5></a>
         </div>
         <div class="col-lg-6">
-            <a href="/admin/session" class="btn btn-info btn-block"><h5>Go to Session List</h5></a>
+            <a href="/admin/session" class="btn btn-info btn-block"><h5>Go to Movie Session List</h5></a>
         </div>
     </div>
 </div>

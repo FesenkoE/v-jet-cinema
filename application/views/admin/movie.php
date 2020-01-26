@@ -7,7 +7,7 @@
     </div>
 </nav>
 <div class="container mt-5">
-    <h3 class="text-center">Movies List</h3>
+    <h3 class="text-center"><?= $title ?> List</h3>
 </div>
 
 <div class="container mt-3">

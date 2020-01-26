@@ -7,15 +7,6 @@ use application\app\Model;
 
 class Movie extends Model
 {
-    const SHOW_TIME = [
-        '10:00:00',
-        '12:00:00',
-        '14:00:00',
-        '16:00:00',
-        '18:00:00',
-        '20:00:00',
-    ];
-
     /**
      * get all movies
      * @return bool|\PDOStatement

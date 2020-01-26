@@ -6,6 +6,7 @@ namespace application\controllers;
 
 use application\app\Controller;
 use application\models\Movie;
+use application\models\MovieSession;
 
 class AdminController extends Controller
 {
@@ -29,7 +30,7 @@ class AdminController extends Controller
     public function actionCreateMovie()
     {
         $arr = [
-            'times' => Movie::SHOW_TIME,
+            'times' => MovieSession::SHOW_TIME,
         ];
 
         if (!empty($_POST)) {
@@ -62,7 +63,7 @@ class AdminController extends Controller
 
         $arr = [
             'model' => $model,
-            'times' => Movie::SHOW_TIME
+            'times' => MovieSession::SHOW_TIME
         ];
 
         $this->view->render('Update', $arr);
@@ -79,5 +80,20 @@ class AdminController extends Controller
         $movie->delete($id);
 
         $this->view->redirect('/admin/movie');
+    }
+
+    /**
+     * render view with all movie sessions
+     */
+    public function actionSession()
+    {
+        $model = new MovieSession();
+        $movieSessions = $model->getAllMovieSession();
+
+        $arr = [
+          'movieSessions' => $movieSessions
+        ];
+
+        $this->view->render('Session', $arr);
     }
 }
