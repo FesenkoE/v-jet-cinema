@@ -91,9 +91,36 @@ class AdminController extends Controller
         $movieSessions = $model->getAllMovieSession();
 
         $arr = [
-          'movieSessions' => $movieSessions
+            'movieSessions' => $movieSessions
         ];
 
         $this->view->render('Session', $arr);
+    }
+
+    /**
+     * view for adding new movie session
+     */
+    public function actionCreateMovieSession()
+    {
+        if (!empty($_POST)) {
+            $movieSession = new MovieSession();
+            $id = $movieSession->save($_POST);
+            if (!empty($id)) {
+                $this->view->redirect('/admin/session');
+            } else {
+                var_dump("Some wrong");
+            }
+        }
+
+        $modelMovies = new Movie();
+        $allMovies = $modelMovies->getAllMoviesName();
+        $movieTime = MovieSession::SHOW_TIME;
+
+        $arr = [
+            'allMovies' => $allMovies,
+            'movieTime' => $movieTime
+        ];
+
+        $this->view->render('Add Movie Session', $arr);
     }
 }

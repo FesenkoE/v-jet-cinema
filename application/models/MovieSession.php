@@ -32,4 +32,18 @@ class MovieSession extends Model
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function save($post)
+    {
+        $params = [
+            'movie_id' => $post['movie_id'],
+            'movie_date' => $post['movie_date'],
+            'movie_time' => $post['movie_time']
+        ];
+
+        $this->db->query('INSERT INTO session (movie_id, movie_date, movie_time) 
+                               VALUES (:movie_id, :movie_date, :movie_time)', $params);
+
+        return $this->db->getLastInsertId();
+    }
 }

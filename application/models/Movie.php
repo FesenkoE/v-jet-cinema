@@ -4,6 +4,7 @@
 namespace application\models;
 
 use application\app\Model;
+use PDO;
 
 class Movie extends Model
 {
@@ -29,6 +30,7 @@ class Movie extends Model
         ];
 
         $this->db->query('INSERT INTO movies (name, description) VALUES (:name, :description)', $params);
+
         return $this->db->getLastInsertId();
     }
 
@@ -47,6 +49,7 @@ class Movie extends Model
         ];
 
         $this->db->query('UPDATE movies SET name = :name, description = :description WHERE id = :id', $params);
+
         return $id;
     }
 
@@ -73,5 +76,16 @@ class Movie extends Model
     public function uploadPoster($path, $id)
     {
         return move_uploaded_file($path, 'public/images/posters/' . $id . '.jpg');
+    }
+
+    /**
+     * get all movies name
+     * @return array
+     */
+    public function getAllMoviesName()
+    {
+        $result = $this->db->query('SELECT id, name FROM movies ORDER BY name');
+
+        return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 }

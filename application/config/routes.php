@@ -48,7 +48,7 @@ return [
 
     'admin/session/create' => [
         'controller' => 'admin',
-        'action' => 'createSession'
+        'action' => 'createMovieSession'
     ],
 
     'admin/session/update/{id:\d+}' => [

@@ -11,7 +11,7 @@
 </div>
 <div class="container mt-3">
     <div class="add-movie text-right">
-        <a href="/admin/movie/create" class="btn btn-success">Add movie session</a>
+        <a href="/admin/session/create" class="btn btn-success">Add movie session</a>
         <a href="/admin" class="btn btn-info">Back to admin panel</a>
     </div>
     <table class="table mt-2">
