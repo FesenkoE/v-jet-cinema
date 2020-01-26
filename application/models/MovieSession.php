@@ -26,7 +26,7 @@ class MovieSession extends Model
     {
         $sql = "SELECT * FROM `session`
                 LEFT JOIN movies on movies.id = session.movie_id 
-                ORDER BY session.movie_date ";
+                ORDER BY session.movie_date";
 
         $result = $this->db->query($sql);
 
