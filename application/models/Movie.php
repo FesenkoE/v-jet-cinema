@@ -4,15 +4,9 @@
 namespace application\models;
 
 use application\app\Model;
-use application\lib\Db;
 
 class Movie extends Model
 {
-    public $id;
-    public $name;
-    public $showTime;
-    public $ticketsCount;
-    public $pathImage;
     const SHOW_TIME = [
         '10:00:00',
         '12:00:00',
@@ -22,52 +16,71 @@ class Movie extends Model
         '20:00:00',
     ];
 
-    public function __construct($name = null, $showTime = null)
-    {
-        parent::__construct();
-        $this->name = $name;
-        $this->showTime = $showTime;
-    }
-
     /**
      * get all movies
-     * @return array
+     * @return bool|\PDOStatement
      */
-    public function getAllMovies() {
-        $sql = 'SELECT * FROM movies';
-
-        return $this->db->findAll($sql);
+    public function getAllMovies()
+    {
+        return $this->db->query('SELECT * FROM movies');
     }
 
     /**
      * add new movie
-     * @param $sql
+     * @param $post
      * @return bool|\PDOStatement
      */
-    public function save($sql) {
-        $result = $this->db->query($sql, [
-            'name' => $this->name,
-            'show_time' => $this->showTime
-        ]);
+    public function save($post)
+    {
+        $params = [
+            'name' => $post['name'],
+            'description' => $post['description']
+        ];
 
-        return $result;
+        $this->db->query('INSERT INTO movies (name, description) VALUES (:name, :description)', $params);
+        return $this->db->getLastInsertId();
     }
 
-    public function edit($post, $id) {
+    /**
+     * edit existing movie
+     * @param $post
+     * @param $id
+     * @return mixed
+     */
+    public function edit($post, $id)
+    {
         $params = [
             'id' => $id,
             'name' => $post['name'],
-            'show_time' => $post['show_time']
+            'description' => $post['description']
         ];
 
-        $this->db->query('UPDATE movies SET name = :name, show_time = :show_time WHERE id = :id', $params);
+        $this->db->query('UPDATE movies SET name = :name, description = :description WHERE id = :id', $params);
+        return $id;
     }
 
-    public function delete($id) {
+    /**
+     * removing existing film
+     * @param $id
+     */
+    public function delete($id)
+    {
         $params = [
             'id' => $id,
         ];
 
         $this->db->query('DELETE FROM movies WHERE id = :id', $params);
+        unlink('public/images/posters/' . $id . '.jpg');
+    }
+
+    /**
+     * upload poster for movie
+     * @param $path
+     * @param $id
+     * @return bool
+     */
+    public function uploadPoster($path, $id)
+    {
+        return move_uploaded_file($path, 'public/images/posters/' . $id . '.jpg');
     }
 }

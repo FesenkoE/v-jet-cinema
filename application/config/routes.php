@@ -21,19 +21,45 @@ return [
         'action' => 'index'
     ],
 
-    'admin/create' => [
+    'admin/movie' => [
         'controller' => 'admin',
-        'action' => 'create'
+        'action' => 'movie'
     ],
 
-    'admin/update/{id:\d+}' => [
+    'admin/movie/create' => [
         'controller' => 'admin',
-        'action' => 'update',
+        'action' => 'createMovie'
     ],
 
-    'admin/delete/{id:\d+}' => [
+    'admin/movie/update/{id:\d+}' => [
         'controller' => 'admin',
-        'action' => 'delete'
-    ]
+        'action' => 'updateMovie',
+    ],
+
+    'admin/movie/delete/{id:\d+}' => [
+        'controller' => 'admin',
+        'action' => 'deleteMovie'
+    ],
+
+    'admin/session' => [
+        'controller' => 'admin',
+        'action' => 'session'
+    ],
+
+    'admin/session/create' => [
+        'controller' => 'admin',
+        'action' => 'createSession'
+    ],
+
+    'admin/session/update/{id:\d+}' => [
+        'controller' => 'admin',
+        'action' => 'updateSession'
+    ],
+
+    'admin/session/delete/{id:\d+}' => [
+        'controller' => 'admin',
+        'action' => 'deleteSession'
+    ],
+
 ];
 

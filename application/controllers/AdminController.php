@@ -11,6 +11,11 @@ class AdminController extends Controller
 {
     public function actionIndex()
     {
+        $this->view->render('Admin Panel');
+    }
+
+    public function actionMovie()
+    {
         $movieModel = new Movie();
         $movies = $movieModel->getAllMovies();
 
@@ -21,32 +26,34 @@ class AdminController extends Controller
         $this->view->render('AdminPanel', $arr);
     }
 
-    public function actionCreate()
+    public function actionCreateMovie()
     {
         $arr = [
             'times' => Movie::SHOW_TIME,
         ];
 
         if (!empty($_POST)) {
-            $name = $_POST['name'];
-            $showTime = $_POST['show_time'];
-
-            $movie = new Movie($name, $showTime);
-            $sql = ('INSERT INTO movies (name, show_time) VALUES (:name, :show_time)');
-            if ($movie->save($sql)) {
-                $this->view->redirect('/admin');
-            };
+            $movie = new Movie();
+            $id = $movie->save($_POST);
+            if (!empty($id) && $movie->uploadPoster($_FILES['poster']['tmp_name'], $id)) {
+                $this->view->redirect('/admin/movie');
+            } else {
+                var_dump("Some wrong");
+            }
         }
 
         $this->view->render('Create', $arr);
     }
 
-    public function actionUpdate()
+    public function actionUpdateMovie()
     {
         if (!empty($_POST)) {
             $movie = new Movie();
             $movie->edit($_POST, $this->route['id']);
-            $this->view->redirect('/admin');
+            if (!empty($_FILES)) {
+                $movie->uploadPoster($_FILES['poster']['tmp_name'], $this->route['id']);
+            }
+            $this->view->redirect('/admin/movie');
         }
 
         $id = $this->route['id'];
@@ -64,13 +71,13 @@ class AdminController extends Controller
     /**
      * remove movie
      */
-    public function actionDelete()
+    public function actionDeleteMovie()
     {
         $id = $this->route['id'];
         $movie = new Movie();
 
         $movie->delete($id);
 
-        $this->view->redirect('/admin');
+        $this->view->redirect('/admin/movie');
     }
 }

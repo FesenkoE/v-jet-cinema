@@ -62,4 +62,13 @@ class Db
         $result = $this->query($sql, $params);
         return $result->fetchColumn();
     }
+
+    /**
+     * get from Db last inserted id
+     * @return string
+     */
+    public function getLastInsertId($table = null)
+    {
+        return $this->db->lastInsertId($table);
+    }
 }
