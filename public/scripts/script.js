@@ -1,23 +1,11 @@
-// $(document).ready(function () {
-//     $('form').submit(function(event) {
-//        let json;
-//        event.preventDefault();
-//        $.ajax({
-//           type: $(this).attr('method'),
-//           url: $(this).attr('action'),
-//           data: new FormData(this),
-//           contentType: false,
-//           cache: false,
-//           processData: false,
-//           success: function (result) {
-//               console.log(result);
-//               json = JSON.parse(result);
-//             if (json.url) {
-//                 window.location.href = json.url;
-//             } else {
-//                 alert(`${json.status} - ${json.message}`);
-//             }
-//           }
-//        });
-//     });
-// });
+$(document).ready(function () {
+    $('.pop-movies').slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        centerMode: true,
+        variableWidth: true,
+        arrows: true,
+    });
+});

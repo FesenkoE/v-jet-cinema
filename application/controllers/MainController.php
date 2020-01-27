@@ -3,7 +3,6 @@
 namespace application\controllers;
 
 use application\app\Controller;
-use application\lib\Db;
 
 class MainController extends Controller
 {
@@ -14,6 +13,6 @@ class MainController extends Controller
             'movies' => $movies
         ];
 
-        $this->view->render('Main', $vars);
+        $this->view->render('Movies', $vars);
     }
 }
