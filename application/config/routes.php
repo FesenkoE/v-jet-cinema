@@ -53,12 +53,12 @@ return [
 
     'admin/session/update/{id:\d+}' => [
         'controller' => 'admin',
-        'action' => 'updateSession'
+        'action' => 'updateMovieSession'
     ],
 
     'admin/session/delete/{id:\d+}' => [
         'controller' => 'admin',
-        'action' => 'deleteSession'
+        'action' => 'deleteMovieSession'
     ],
 
 ];

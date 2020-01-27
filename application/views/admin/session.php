@@ -37,8 +37,8 @@
                 <td><?= $movieSession['tickets_sale'] ?></td>
                 <td><?= $movieSession['tickets_sold'] ?></td>
                 <td class="text-right">
-                    <a href="<?= "/admin/movie/update/" . $movieSession['id'] ?>"  class="btn btn-primary">Edit</a>
-                    <a href="<?= "/admin/movie/delete/" . $movieSession['id'] ?>" class="btn btn-danger">Delete</a>
+                    <a href="<?= "/admin/session/update/" . $movieSession['id'] ?>"  class="btn btn-primary">Edit</a>
+                    <a href="<?= "/admin/session/delete/" . $movieSession['id'] ?>" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>

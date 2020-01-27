@@ -123,4 +123,43 @@ class AdminController extends Controller
 
         $this->view->render('Add Movie Session', $arr);
     }
+
+    /**
+     * edit movie session
+     */
+    public function actionUpdateMovieSession()
+    {
+        if (!empty($_POST)) {
+            $movie = new MovieSession();
+            $movie->edit($_POST, $this->route['id']);
+            $this->view->redirect('/admin/session');
+        }
+
+        $id = $this->route['id'];
+        $sql = 'SELECT * FROM session WHERE id=' . $id;
+        $model = $this->db->findOne($sql);
+        $modelMovies = new Movie();
+        $allMovies = $modelMovies->getAllMoviesName();
+
+        $arr = [
+            'model' => $model,
+            'times' => MovieSession::SHOW_TIME,
+            'allMovies' => $allMovies
+        ];
+
+        $this->view->render('Update Movie Session', $arr);
+    }
+
+    /**
+     * delete movie session
+     */
+    public function actionDeleteMovieSession()
+    {
+        $id = $this->route['id'];
+        $movie = new MovieSession();
+
+        $movie->delete($id);
+
+        $this->view->redirect('/admin/session');
+    }
 }
